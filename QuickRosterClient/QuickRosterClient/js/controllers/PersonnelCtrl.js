@@ -1,19 +1,36 @@
-﻿'use strict'
+﻿'use strict';
 
 var app = angular.module('inspinia');
 
-app.controller('PersonnelCtrl', function ($scope) {
+app.controller('PersonnelCtrl', ['$scope', 'modalSvc', function ($scope, modalSvc) {
 
-    $scope.message = 'message for Personnel';
-
-    $scope.personnelList = getFakePersonnelList();
-
-
+     $scope.message = 'message for Personnel';
+     $scope.personnelList = getFakePersonnelList();
      $scope.currentPage = 1;
      $scope.pageSize = 10;
 
+     $scope.openPersonnelDetails = function (personnel) {
 
-});
+         var clone = JSON.parse(JSON.stringify(personnel));
+         var templateUrl = '/views/management/personnelDetail.html';
+         var controllerName = 'PersonnelDetailCtrl';
+
+         modalSvc.openModal($scope.onSaveCallFromModal, $scope.onCancelCallFromModal, templateUrl, controllerName, clone, personnel, null);
+
+     };
+
+     $scope.onSaveCallFromModal = function (personnelMofified) {
+
+         //Post the modified object to server. 
+
+     };
+
+     $scope.onCancelCallFromModal = function () {
+         // do nothing. 
+     };
+
+
+}]);
 
 function getFakePersonnelList()
 {
@@ -23,10 +40,10 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Carol",
         "LastName": "Robinson",
-        "Preferred Name": "Nancy",
+        "PreferredName": "Nancy",
         "Email": "nrobinson0@spotify.com",
         "Mobile": "7-(285)587-6053",
-        "Date of Birth": "12/04/1993"
+        "DateOfBirth": "12/04/1993"
     }, {
         "id": 2,
         "Gender": "Female",
@@ -46,9 +63,9 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Norma",
         "LastName": "Watson",
-        "Preferred Name": "Kathy",
+        "PreferredName": "Kathy",
         "Email": "kwatson3@google.co.uk",
-        "Date of Birth": "23/09/1998"
+        "DateOfBirth": "23/09/1998"
     }, {
         "id": 5,
         "Gender": "Female",
@@ -61,18 +78,18 @@ function getFakePersonnelList()
         "Gender": "Male",
         "FirstName": "Joe",
         "LastName": "Bailey",
-        "Preferred Name": "Jason",
+        "PreferredName": "Jason",
         "Email": "jbailey5@globo.com",
-        "Date of Birth": "14/02/1999"
+        "DateOfBirth": "14/02/1999"
     }, {
         "id": 7,
         "Gender": "Male",
         "FirstName": "Eric",
         "LastName": "Jackson",
-        "Preferred Name": "Eugene",
+        "PreferredName": "Eugene",
         "Email": "ejackson6@arizona.edu",
         "Mobile": "6-(133)408-2367",
-        "Date of Birth": "13/07/1992"
+        "DateOfBirth": "13/07/1992"
     }, {
         "id": 8,
         "Gender": "Female",
@@ -85,10 +102,10 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Judy",
         "LastName": "Marshall",
-        "Preferred Name": "Anna",
+        "PreferredName": "Anna",
         "Email": "amarshall8@nytimes.com",
         "Mobile": "0-(632)628-0336",
-        "Date of Birth": "16/06/1982"
+        "DateOfBirth": "16/06/1982"
     }, {
         "id": 10,
         "Gender": "Female",
@@ -127,28 +144,28 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Carol",
         "LastName": "Ferguson",
-        "Preferred Name": "Sharon",
+        "PreferredName": "Sharon",
         "Email": "sfergusone@symantec.com",
         "Mobile": "8-(887)198-5210",
-        "Date of Birth": "21/12/1981"
+        "DateOfBirth": "21/12/1981"
     }, {
         "id": 16,
         "Gender": "Female",
         "FirstName": "Linda",
         "LastName": "Williamson",
-        "Preferred Name": "Judith",
+        "PreferredName": "Judith",
         "Email": "jwilliamsonf@pbs.org",
         "Mobile": "6-(352)892-7585",
-        "Date of Birth": "16/08/1990"
+        "DateOfBirth": "16/08/1990"
     }, {
         "id": 17,
         "Gender": "Male",
         "FirstName": "Steve",
         "LastName": "Kennedy",
-        "Preferred Name": "John",
+        "PreferredName": "John",
         "Email": "jkennedyg@buzzfeed.com",
         "Mobile": "9-(174)449-4401",
-        "Date of Birth": "21/07/1988"
+        "DateOfBirth": "21/07/1988"
     }, {
         "id": 18,
         "Gender": "Male",
@@ -161,19 +178,19 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Mildred",
         "LastName": "Ramos",
-        "Preferred Name": "Rachel",
+        "PreferredName": "Rachel",
         "Email": "rramosi@uol.com.br",
         "Mobile": "3-(010)521-9400",
-        "Date of Birth": "03/11/1987"
+        "DateOfBirth": "03/11/1987"
     }, {
         "id": 20,
         "Gender": "Female",
         "FirstName": "Annie",
         "LastName": "Payne",
-        "Preferred Name": "Barbara",
+        "PreferredName": "Barbara",
         "Email": "bpaynej@google.co.jp",
         "Mobile": "1-(150)127-1242",
-        "Date of Birth": "06/08/1992"
+        "DateOfBirth": "06/08/1992"
     }, {
         "id": 21,
         "Gender": "Male",
@@ -186,44 +203,44 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Teresa",
         "LastName": "Diaz",
-        "Preferred Name": "Paula",
+        "PreferredName": "Paula",
         "Email": "pdiazl@skype.com",
         "Mobile": "6-(420)856-3001",
-        "Date of Birth": "06/04/1993"
+        "DateOfBirth": "06/04/1993"
     }, {
         "id": 23,
         "Gender": "Male",
         "FirstName": "Randy",
         "LastName": "Gomez",
-        "Preferred Name": "Peter",
+        "PreferredName": "Peter",
         "Email": "pgomezm@cpanel.net",
         "Mobile": "9-(603)421-8691",
-        "Date of Birth": "09/02/1983"
+        "DateOfBirth": "09/02/1983"
     }, {
         "id": 24,
         "Gender": "Female",
         "FirstName": "Kathryn",
         "LastName": "Collins",
-        "Preferred Name": "Tammy",
+        "PreferredName": "Tammy",
         "Email": "tcollinsn@nba.com",
-        "Date of Birth": "28/12/1990"
+        "DateOfBirth": "28/12/1990"
     }, {
         "id": 25,
         "Gender": "Male",
         "FirstName": "Michael",
         "LastName": "Armstrong",
-        "Preferred Name": "Raymond",
+        "PreferredName": "Raymond",
         "Email": "rarmstrongo@yandex.ru",
-        "Date of Birth": "21/01/1993"
+        "DateOfBirth": "21/01/1993"
     }, {
         "id": 26,
         "Gender": "Female",
         "FirstName": "Kelly",
         "LastName": "Boyd",
-        "Preferred Name": "Christina",
+        "PreferredName": "Christina",
         "Email": "cboydp@narod.ru",
         "Mobile": "8-(944)697-8742",
-        "Date of Birth": "14/02/1997"
+        "DateOfBirth": "14/02/1997"
     }, {
         "id": 27,
         "Gender": "Female",
@@ -243,28 +260,28 @@ function getFakePersonnelList()
         "Gender": "Male",
         "FirstName": "Wayne",
         "LastName": "Medina",
-        "Preferred Name": "George",
+        "PreferredName": "George",
         "Email": "gmedinas@bbc.co.uk",
         "Mobile": "9-(200)829-1258",
-        "Date of Birth": "13/09/1991"
+        "DateOfBirth": "13/09/1991"
     }, {
         "id": 30,
         "Gender": "Male",
         "FirstName": "Roger",
         "LastName": "Jordan",
-        "Preferred Name": "Gerald",
+        "PreferredName": "Gerald",
         "Email": "gjordant@multiply.com",
         "Mobile": "8-(734)794-7985",
-        "Date of Birth": "19/05/1992"
+        "DateOfBirth": "19/05/1992"
     }, {
         "id": 31,
         "Gender": "Male",
         "FirstName": "Joe",
         "LastName": "King",
-        "Preferred Name": "Aaron",
+        "PreferredName": "Aaron",
         "Email": "akingu@webeden.co.uk",
         "Mobile": "5-(578)921-2575",
-        "Date of Birth": "05/12/1995"
+        "DateOfBirth": "05/12/1995"
     }, {
         "id": 32,
         "Gender": "Female",
@@ -277,52 +294,52 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Janice",
         "LastName": "Dean",
-        "Preferred Name": "Ruby",
+        "PreferredName": "Ruby",
         "Email": "rdeanw@angelfire.com",
         "Mobile": "1-(136)494-8683",
-        "Date of Birth": "12/07/1989"
+        "DateOfBirth": "12/07/1989"
     }, {
         "id": 34,
         "Gender": "Male",
         "FirstName": "Justin",
         "LastName": "Montgomery",
-        "Preferred Name": "Kevin",
+        "PreferredName": "Kevin",
         "Email": "kmontgomeryx@xing.com",
-        "Date of Birth": "21/12/1996"
+        "DateOfBirth": "21/12/1996"
     }, {
         "id": 35,
         "Gender": "Female",
         "FirstName": "Anna",
         "LastName": "Wright",
-        "Preferred Name": "Cheryl",
+        "PreferredName": "Cheryl",
         "Email": "cwrighty@addthis.com",
-        "Date of Birth": "03/11/1994"
+        "DateOfBirth": "03/11/1994"
     }, {
         "id": 36,
         "Gender": "Male",
         "FirstName": "Russell",
         "LastName": "Gilbert",
-        "Preferred Name": "Jonathan",
+        "PreferredName": "Jonathan",
         "Email": "jgilbertz@apache.org",
         "Mobile": "4-(299)126-9017",
-        "Date of Birth": "04/08/1987"
+        "DateOfBirth": "04/08/1987"
     }, {
         "id": 37,
         "Gender": "Female",
         "FirstName": "Karen",
         "LastName": "Ford",
-        "Preferred Name": "Kathleen",
+        "PreferredName": "Kathleen",
         "Email": "kford10@ovh.net",
         "Mobile": "8-(089)605-4053",
-        "Date of Birth": "19/12/1981"
+        "DateOfBirth": "19/12/1981"
     }, {
         "id": 38,
         "Gender": "Male",
         "FirstName": "Gary",
         "LastName": "Johnson",
-        "Preferred Name": "Jesse",
+        "PreferredName": "Jesse",
         "Email": "jjohnson11@ask.com",
-        "Date of Birth": "18/07/1984"
+        "DateOfBirth": "18/07/1984"
     }, {
         "id": 39,
         "Gender": "Female",
@@ -363,45 +380,45 @@ function getFakePersonnelList()
         "Gender": "Male",
         "FirstName": "Andrew",
         "LastName": "Taylor",
-        "Preferred Name": "Larry",
+        "PreferredName": "Larry",
         "Email": "ltaylor17@rakuten.co.jp",
         "Mobile": "4-(705)025-2341",
-        "Date of Birth": "11/08/1992"
+        "DateOfBirth": "11/08/1992"
     }, {
         "id": 45,
         "Gender": "Male",
         "FirstName": "Robert",
         "LastName": "King",
-        "Preferred Name": "James",
+        "PreferredName": "James",
         "Email": "jking18@icio.us",
         "Mobile": "3-(912)573-6221",
-        "Date of Birth": "24/08/1993"
+        "DateOfBirth": "24/08/1993"
     }, {
         "id": 46,
         "Gender": "Male",
         "FirstName": "Steven",
         "LastName": "Graham",
-        "Preferred Name": "Jack",
+        "PreferredName": "Jack",
         "Email": "jgraham19@rambler.ru",
         "Mobile": "8-(871)918-5825",
-        "Date of Birth": "20/09/1984"
+        "DateOfBirth": "20/09/1984"
     }, {
         "id": 47,
         "Gender": "Female",
         "FirstName": "Rose",
         "LastName": "Medina",
-        "Preferred Name": "Stephanie",
+        "PreferredName": "Stephanie",
         "Email": "smedina1a@blogs.com",
         "Mobile": "6-(993)977-7467",
-        "Date of Birth": "20/09/1996"
+        "DateOfBirth": "20/09/1996"
     }, {
         "id": 48,
         "Gender": "Male",
         "FirstName": "Gary",
         "LastName": "Howard",
-        "Preferred Name": "Ryan",
+        "PreferredName": "Ryan",
         "Email": "rhoward1b@zimbio.com",
-        "Date of Birth": "11/08/1981"
+        "DateOfBirth": "11/08/1981"
     }, {
         "id": 49,
         "Gender": "Male",
@@ -420,10 +437,10 @@ function getFakePersonnelList()
         "Gender": "Male",
         "FirstName": "Eric",
         "LastName": "Weaver",
-        "Preferred Name": "Steve",
+        "PreferredName": "Steve",
         "Email": "sweaver1e@yellowpages.com",
         "Mobile": "6-(975)929-5201",
-        "Date of Birth": "15/01/1988"
+        "DateOfBirth": "15/01/1988"
     }, {
         "id": 52,
         "Gender": "Female",
@@ -436,19 +453,19 @@ function getFakePersonnelList()
         "Gender": "Male",
         "FirstName": "Ryan",
         "LastName": "Hayes",
-        "Preferred Name": "Shawn",
+        "PreferredName": "Shawn",
         "Email": "shayes1g@freewebs.com",
         "Mobile": "1-(284)855-0573",
-        "Date of Birth": "29/03/1999"
+        "DateOfBirth": "29/03/1999"
     }, {
         "id": 54,
         "Gender": "Male",
         "FirstName": "Charles",
         "LastName": "Riley",
-        "Preferred Name": "Bobby",
+        "PreferredName": "Bobby",
         "Email": "briley1h@163.com",
         "Mobile": "0-(109)525-4886",
-        "Date of Birth": "10/11/1986"
+        "DateOfBirth": "10/11/1986"
     }, {
         "id": 55,
         "Gender": "Female",
@@ -461,10 +478,10 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Sharon",
         "LastName": "Mills",
-        "Preferred Name": "Kelly",
+        "PreferredName": "Kelly",
         "Email": "kmills1j@tuttocitta.it",
         "Mobile": "7-(116)252-9097",
-        "Date of Birth": "11/09/1998"
+        "DateOfBirth": "11/09/1998"
     }, {
         "id": 57,
         "Gender": "Female",
@@ -491,10 +508,10 @@ function getFakePersonnelList()
         "Gender": "Male",
         "FirstName": "Richard",
         "LastName": "Jackson",
-        "Preferred Name": "Victor",
+        "PreferredName": "Victor",
         "Email": "vjackson1n@pinterest.com",
         "Mobile": "8-(815)846-2717",
-        "Date of Birth": "28/11/1997"
+        "DateOfBirth": "28/11/1997"
     }, {
         "id": 61,
         "Gender": "Female",
@@ -507,10 +524,10 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Kimberly",
         "LastName": "Rose",
-        "Preferred Name": "Deborah",
+        "PreferredName": "Deborah",
         "Email": "drose1p@webnode.com",
         "Mobile": "6-(503)530-3739",
-        "Date of Birth": "21/05/1990"
+        "DateOfBirth": "21/05/1990"
     }, {
         "id": 63,
         "Gender": "Female",
@@ -522,10 +539,10 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Teresa",
         "LastName": "Hunter",
-        "Preferred Name": "Doris",
+        "PreferredName": "Doris",
         "Email": "dhunter1r@mlb.com",
         "Mobile": "9-(168)647-5886",
-        "Date of Birth": "26/09/1996"
+        "DateOfBirth": "26/09/1996"
     }, {
         "id": 65,
         "Gender": "Female",
@@ -545,9 +562,9 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Cheryl",
         "LastName": "Fox",
-        "Preferred Name": "Diane",
+        "PreferredName": "Diane",
         "Email": "dfox1u@blogger.com",
-        "Date of Birth": "10/08/1998"
+        "DateOfBirth": "10/08/1998"
     }, {
         "id": 68,
         "Gender": "Male",
@@ -560,26 +577,26 @@ function getFakePersonnelList()
         "Gender": "Male",
         "FirstName": "Harold",
         "LastName": "Torres",
-        "Preferred Name": "Ryan",
+        "PreferredName": "Ryan",
         "Email": "rtorres1w@usgs.gov",
-        "Date of Birth": "11/02/1984"
+        "DateOfBirth": "11/02/1984"
     }, {
         "id": 70,
         "Gender": "Male",
         "FirstName": "Robert",
         "LastName": "Austin",
-        "Preferred Name": "Willie",
+        "PreferredName": "Willie",
         "Email": "waustin1x@imageshack.us",
         "Mobile": "8-(822)346-0795",
-        "Date of Birth": "06/07/1985"
+        "DateOfBirth": "06/07/1985"
     }, {
         "id": 71,
         "Gender": "Female",
         "FirstName": "Ruth",
         "LastName": "Sanders",
-        "Preferred Name": "Pamela",
+        "PreferredName": "Pamela",
         "Email": "psanders1y@zimbio.com",
-        "Date of Birth": "04/08/1982"
+        "DateOfBirth": "04/08/1982"
     }, {
         "id": 72,
         "Gender": "Female",
@@ -592,28 +609,28 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Gloria",
         "LastName": "Burton",
-        "Preferred Name": "Wanda",
+        "PreferredName": "Wanda",
         "Email": "wburton20@un.org",
         "Mobile": "7-(770)203-3740",
-        "Date of Birth": "18/05/1994"
+        "DateOfBirth": "18/05/1994"
     }, {
         "id": 74,
         "Gender": "Male",
         "FirstName": "Anthony",
         "LastName": "Wallace",
-        "Preferred Name": "Thomas",
+        "PreferredName": "Thomas",
         "Email": "twallace21@apache.org",
         "Mobile": "2-(019)104-6197",
-        "Date of Birth": "15/03/1988"
+        "DateOfBirth": "15/03/1988"
     }, {
         "id": 75,
         "Gender": "Female",
         "FirstName": "Kimberly",
         "LastName": "Foster",
-        "Preferred Name": "Jane",
+        "PreferredName": "Jane",
         "Email": "jfoster22@boston.com",
         "Mobile": "7-(029)453-7967",
-        "Date of Birth": "13/04/1996"
+        "DateOfBirth": "13/04/1996"
     }, {
         "id": 76,
         "Gender": "Female",
@@ -626,19 +643,19 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Catherine",
         "LastName": "Hughes",
-        "Preferred Name": "Melissa",
+        "PreferredName": "Melissa",
         "Email": "mhughes24@illinois.edu",
         "Mobile": "5-(070)063-0479",
-        "Date of Birth": "25/05/1997"
+        "DateOfBirth": "25/05/1997"
     }, {
         "id": 78,
         "Gender": "Male",
         "FirstName": "Brian",
         "LastName": "Bowman",
-        "Preferred Name": "Victor",
+        "PreferredName": "Victor",
         "Email": "vbowman25@purevolume.com",
         "Mobile": "8-(928)669-2065",
-        "Date of Birth": "28/08/1983"
+        "DateOfBirth": "28/08/1983"
     }, {
         "id": 79,
         "Gender": "Male",
@@ -665,19 +682,19 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Bonnie",
         "LastName": "Gibson",
-        "Preferred Name": "Teresa",
+        "PreferredName": "Teresa",
         "Email": "tgibson29@netvibes.com",
         "Mobile": "7-(655)753-1840",
-        "Date of Birth": "16/11/1986"
+        "DateOfBirth": "16/11/1986"
     }, {
         "id": 83,
         "Gender": "Male",
         "FirstName": "Justin",
         "LastName": "Coleman",
-        "Preferred Name": "Andrew",
+        "PreferredName": "Andrew",
         "Email": "acoleman2a@illinois.edu",
         "Mobile": "1-(042)124-6303",
-        "Date of Birth": "18/05/1991"
+        "DateOfBirth": "18/05/1991"
     }, {
         "id": 84,
         "Gender": "Female",
@@ -696,36 +713,36 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Judy",
         "LastName": "Greene",
-        "Preferred Name": "Heather",
+        "PreferredName": "Heather",
         "Email": "hgreene2d@instagram.com",
         "Mobile": "4-(316)611-9885",
-        "Date of Birth": "06/01/1991"
+        "DateOfBirth": "06/01/1991"
     }, {
         "id": 87,
         "Gender": "Female",
         "FirstName": "Marie",
         "LastName": "Ross",
-        "Preferred Name": "Stephanie",
+        "PreferredName": "Stephanie",
         "Email": "sross2e@census.gov",
-        "Date of Birth": "28/06/1996"
+        "DateOfBirth": "28/06/1996"
     }, {
         "id": 88,
         "Gender": "Female",
         "FirstName": "Bonnie",
         "LastName": "Riley",
-        "Preferred Name": "Dorothy",
+        "PreferredName": "Dorothy",
         "Email": "driley2f@furl.net",
         "Mobile": "7-(859)418-6828",
-        "Date of Birth": "23/10/1986"
+        "DateOfBirth": "23/10/1986"
     }, {
         "id": 89,
         "Gender": "Female",
         "FirstName": "Rachel",
         "LastName": "Fuller",
-        "Preferred Name": "Maria",
+        "PreferredName": "Maria",
         "Email": "mfuller2g@plala.or.jp",
         "Mobile": "1-(487)523-6136",
-        "Date of Birth": "26/06/1994"
+        "DateOfBirth": "26/06/1994"
     }, {
         "id": 90,
         "Gender": "Female",
@@ -738,10 +755,10 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Amanda",
         "LastName": "Mccoy",
-        "Preferred Name": "Beverly",
+        "PreferredName": "Beverly",
         "Email": "bmccoy2i@bizjournals.com",
         "Mobile": "0-(531)261-7405",
-        "Date of Birth": "16/08/1998"
+        "DateOfBirth": "16/08/1998"
     }, {
         "id": 92,
         "Gender": "Female",
@@ -753,19 +770,19 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Teresa",
         "LastName": "Meyer",
-        "Preferred Name": "Judy",
+        "PreferredName": "Judy",
         "Email": "jmeyer2k@mayoclinic.com",
         "Mobile": "5-(961)879-3871",
-        "Date of Birth": "10/11/1986"
+        "DateOfBirth": "10/11/1986"
     }, {
         "id": 94,
         "Gender": "Female",
         "FirstName": "Wanda",
         "LastName": "Little",
-        "Preferred Name": "Judith",
+        "PreferredName": "Judith",
         "Email": "jlittle2l@scientificamerican.com",
         "Mobile": "7-(129)990-7125",
-        "Date of Birth": "18/11/1984"
+        "DateOfBirth": "18/11/1984"
     }, {
         "id": 95,
         "Gender": "Male",
@@ -778,10 +795,10 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Denise",
         "LastName": "Romero",
-        "Preferred Name": "Paula",
+        "PreferredName": "Paula",
         "Email": "promero2n@gizmodo.com",
         "Mobile": "5-(878)712-3205",
-        "Date of Birth": "21/01/1996"
+        "DateOfBirth": "21/01/1996"
     }, {
         "id": 97,
         "Gender": "Male",
@@ -801,10 +818,10 @@ function getFakePersonnelList()
         "Gender": "Female",
         "FirstName": "Cynthia",
         "LastName": "Gonzalez",
-        "Preferred Name": "Helen",
+        "PreferredName": "Helen",
         "Email": "hgonzalez2q@eepurl.com",
         "Mobile": "0-(580)130-6850",
-        "Date of Birth": "31/07/1988"
+        "DateOfBirth": "31/07/1988"
     }, {
         "id": 100,
         "Gender": "Male",

@@ -4,11 +4,12 @@
  */
 (function () {
     angular.module('inspinia', [
-        'ui.router',                    // Routing
-        'oc.lazyLoad',                  // ocLazyLoad
+        'ui.router', // Routing
+        'oc.lazyLoad', // ocLazyLoad
         'ui.bootstrap',
-        'pascalprecht.translate',       // Angular Translate
-        'angularUtils.directives.dirPagination',
-    ])
+        'pascalprecht.translate', // Angular Translate
+        'angularUtils.directives.dirPagination'
+       // 'mgcrea.ngStrap'
+    ]);
 })();
 

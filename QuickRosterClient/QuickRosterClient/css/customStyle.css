@@ -1,0 +1,3 @@
+﻿
+/*.ng-dirty.ng-valid { border:1px solid Green; }*/
+.form-control.ng-dirty.ng-invalid { border:1px solid Red !important; }

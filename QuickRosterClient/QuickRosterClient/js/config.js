@@ -82,7 +82,18 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: "/personnel",
             templateUrl: "views/management/personnel.html",
             data: { pageTitle: 'Personnnel' },
-            controller: 'PersonnelCtrl'
+            controller: 'PersonnelCtrl',
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'datePicker',
+                            files: ['css/plugins/datepicker/angular-datapicker.css', 'js/plugins/datepicker/angular-datepicker.js']
+                        },
+                       
+                    ]);
+                }
+            }
         })
         .state('management.task', {
             url: "/task",
