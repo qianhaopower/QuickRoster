@@ -8,20 +8,27 @@ app.controller('PersonnelCtrl', ['$scope', 'modalSvc', function ($scope, modalSv
      $scope.personnelList = getFakePersonnelList();
      $scope.currentPage = 1;
      $scope.pageSize = 10;
+     $scope.templateUrl = '/views/management/personnelDetail.html';
+     $scope.controllerName = 'PersonnelDetailCtrl';
 
      $scope.openPersonnelDetails = function (personnel) {
 
          var clone = JSON.parse(JSON.stringify(personnel));
-         var templateUrl = '/views/management/personnelDetail.html';
-         var controllerName = 'PersonnelDetailCtrl';
+      
 
-         modalSvc.openModal($scope.onSaveCallFromModal, $scope.onCancelCallFromModal, templateUrl, controllerName, clone, personnel, null);
+         modalSvc.openModal($scope.onSaveCallFromModal, $scope.onCancelCallFromModal, $scope.templateUrl, $scope.controllerName, clone, personnel, null);
 
      };
 
      $scope.onSaveCallFromModal = function (personnelMofified) {
 
          //Post the modified object to server. 
+         if (personnelMofified.id == -1) {
+             //new personnel
+         } else {
+             //modify exsiting
+         }
+         
 
      };
 
@@ -29,6 +36,12 @@ app.controller('PersonnelCtrl', ['$scope', 'modalSvc', function ($scope, modalSv
          // do nothing. 
      };
 
+
+     $scope.addNew = function () {
+         var newPersonnel = {id:-1, Gender:'Male'};
+
+         modalSvc.openModal($scope.onSaveCallFromModal, $scope.onCancelCallFromModal, $scope.templateUrl, $scope.controllerName, newPersonnel, null, null);
+    };
 
 }]);
 

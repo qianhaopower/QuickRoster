@@ -12,15 +12,25 @@
                 <form method="get" class="form-horizontal">
 
 
-                    <div class="row m-b-sm m-t-sm">
-                        <!--<div class="col-md-1">
-                            <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i> Refresh</button>
-                        </div>-->
-                        <div class="col-md-11">
-                            <div class="input-group">
-                                <input type="text" placeholder="search personnel name" class="input-sm form-control" ng-model="searchText"> 
+                    <div class="row">
+
+
+                        <div class="row ">
+
+                            
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <button type="button" id="loading-example-btn" class="btn btn-white btn-sm" ng-click ="addNew()"><i class="fa fa-plus-circle "></i> Add new personnel</button>
+                                </div>
                             </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" placeholder="search personnel name" class="input-sm form-control" ng-model="searchText">
+                                </div>
+                            </div>
+
                         </div>
+
                     </div>
 
                     <div class="project-list">
