@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="input-group">
-                                    <input type="text" placeholder="search personnel name" class="input-sm form-control" ng-model="searchText">
+                                    <input type="text" placeholder="Search personnel name" class="input-sm form-control" ng-model="searchText">
                                 </div>
                             </div>
 
@@ -48,7 +48,9 @@
                                     </td>
                                     <td class="project-actions">
                                         <a class="btn btn-white btn-sm" ng-click="openPersonnelDetails(person)"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-white btn-sm" ng-click="deletePersonnel(person)"><i class="fa fa-trash-o"></i></a>
                                     </td>
+                                   
                                 </tr>
                             </tbody>
                         </table>

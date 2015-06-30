@@ -116,6 +116,7 @@
     <Content Include="js\plugins\oclazyload\examples\complexExample\README.md" />
     <Content Include="js\plugins\oclazyload\LICENSE.md" />
     <Content Include="js\plugins\oclazyload\README.md" />
+    <Content Include="js\services\personnelSvc.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

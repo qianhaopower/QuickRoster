@@ -24,10 +24,12 @@ app.controller('PersonnelDetailCtrl', ['$scope', '$modalInstance', 'itemToEdit',
 
     $scope.saveAndClose = function (data, form) {
         if (form.$valid) {
-            if (personnel.DateOfBirth) {
+            if (personnel.DateOfBirth && typeof (personnel.DateOfBirth) != "string") {
                 var isoDate = personnel.DateOfBirth.toISOString();
                 personnel.DateOfBirth = isoDate;
+                
             }
+
 
             $modalInstance.close(data);
         } else {

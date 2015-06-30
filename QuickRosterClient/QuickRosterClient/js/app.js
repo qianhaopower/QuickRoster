@@ -8,7 +8,8 @@
         'oc.lazyLoad', // ocLazyLoad
         'ui.bootstrap',
         'pascalprecht.translate', // Angular Translate
-        'angularUtils.directives.dirPagination'
+        'angularUtils.directives.dirPagination',
+        'ngResource'
        // 'mgcrea.ngStrap'
     ]);
 })();
