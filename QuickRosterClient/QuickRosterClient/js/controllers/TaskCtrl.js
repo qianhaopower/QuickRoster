@@ -21,7 +21,7 @@ app.controller('TaskCtrl', ['$scope', 'modalSvc', 'taskSvc', function ($scope, m
     $scope.onSaveCallFromModal = function (taskMofified) {
 
         //Post the modified object to server. 
-        if (taskMofified.ID == -1) {
+        if (taskMofified.TaskId == -1) {
             //new task
             taskSvc.addTask(taskMofified);
         } else {

@@ -1,0 +1,39 @@
+﻿<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Location Details</h4>
+    </div>
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <form name="locationInfo" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Location Name</label>
+                                <div class="col-sm-9"><input type="text" class="form-control" placeholder="--location name--" ng-model="location.LocationName" required></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Location Description</label>
+                                <div class="col-sm-9"><textarea class="form-control" placeholder="-location description--" ng-model="location.Description" required></textarea></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Location Color</label>
+                                <div class="col-sm-2"><a colorpicker type="text" ng-model="location.Color"  class="form-control" ng-style="{'background-color':location.Color};"></a></div>
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="cancel(locationInfo)">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="locationInfo.$pristine || locationInfo.$invalid" ng-click="saveAndClose(location,locationInfo)">Save changes</button>
+
+    </div>
+</div>
+

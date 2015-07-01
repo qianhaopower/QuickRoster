@@ -114,7 +114,17 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: "/team",
             templateUrl: "views/management/team.html",
             data: { pageTitle: 'Team' },
-            controller: 'TeamCtrl'
+            controller: 'TeamCtrl',
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'colorpicker.module',
+                            files: ['css/plugins/colorpicker/colorpicker.css', 'js/plugins/colorpicker/bootstrap-colorpicker-module.js']
+                        },
+                    ]);
+                }
+            }
         })
         .state('management.shifts', {
             url: "/shifts",
@@ -132,13 +142,33 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: "/equipment",
             templateUrl: "views/management/equipment.html",
             data: { pageTitle: 'Equipment' },
-            controller: 'EquipmentCtrl'
+            controller: 'EquipmentCtrl',
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'colorpicker.module',
+                            files: ['css/plugins/colorpicker/colorpicker.css', 'js/plugins/colorpicker/bootstrap-colorpicker-module.js']
+                        },
+                    ]);
+                }
+            }
         })
         .state('management.location', {
             url: "/location",
             templateUrl: "views/management/location.html",
             data: { pageTitle: 'Location' },
-            controller: 'LocationCtrl'
+            controller: 'LocationCtrl',
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'colorpicker.module',
+                            files: ['css/plugins/colorpicker/colorpicker.css', 'js/plugins/colorpicker/bootstrap-colorpicker-module.js']
+                        },
+                    ]);
+                }
+            }
         })
         .state('management.user', {
             url: "/user",
@@ -148,9 +178,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
         })
         .state('management.payRate', {
             url: "/payRate",
-            templateUrl: "views/management/pay_rate.html",
+            templateUrl: "views/management/payRule.html",
             data: { pageTitle: 'Pay Rates' },
-            controller: 'PayRateCtrl'
+            controller: 'PayRuleCtrl',
         })
 
 

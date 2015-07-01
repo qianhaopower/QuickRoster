@@ -1,0 +1,36 @@
+﻿<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">PayRule Details</h4>
+    </div>
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <form name="payRuleInfo" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">PayRule Name</label>
+                                <div class="col-sm-9"><input type="text" class="form-control" placeholder="--payRule name--" ng-model="payRule.PayRuleName" required></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">PayRule Description</label>
+                                <div class="col-sm-9"><textarea class="form-control" placeholder="-payRule description--" ng-model="payRule.Description" required></textarea></div>
+                            </div>
+                            
+                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="cancel(payRuleInfo)">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="payRuleInfo.$pristine || payRuleInfo.$invalid" ng-click="saveAndClose(payRule,payRuleInfo)">Save changes</button>
+
+    </div>
+</div>
+

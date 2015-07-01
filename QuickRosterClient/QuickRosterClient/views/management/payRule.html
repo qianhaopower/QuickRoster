@@ -4,8 +4,8 @@
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>
-                    Team
-                    <small>A list of all teams</small>
+                    PayRule
+                    <small>A list of all Pay Rules</small>
                 </h5>
             </div>
             <div class="ibox-content">
@@ -14,12 +14,12 @@
                         <div class="row ">
                             <div class="col-md-10">
                                 <div class="input-group">
-                                    <button type="button" id="loading-example-btn" class="btn btn-white btn-sm" ng-click="addNew()"><i class="fa fa-plus-circle "></i> Add new Team</button>
+                                    <button type="button" id="loading-example-btn" class="btn btn-white btn-sm" ng-click="addNew()"><i class="fa fa-plus-circle "></i> Add new PayRule</button>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Search team name" class="input-sm form-control" ng-model="searchText">
+                                    <input type="text" placeholder="Search payRule name" class="input-sm form-control" ng-model="searchText">
                                 </div>
                             </div>
 
@@ -31,22 +31,22 @@
 
                         <table class="table table-hover">
                             <tbody>
-                                <tr dir-paginate="team in teamList | filter:searchText| itemsPerPage:10" current-page="currentPage">
-                                    <td><div ng-style="{'background-color':team.Color};" class="block20"></div></td>
+                                <tr dir-paginate="payRule in payRuleList | filter:searchText| itemsPerPage:10" current-page="currentPage">
+                              
                                     <td class="project-people">
                                         <a>
-                                            <i class=" fa fa-users">
+                                            <i class=" fa fa-usd">
                                             </i>
                                         </a>
                                     </td>
                                     <td class="project-title">
-                                        <a>{{team.TeamName}}</a>
+                                        <a>{{payRule.PayRuleName}}</a>
                                         <br />
-                                        <small>{{team.Description}}</small>
+                                        <small>{{payRule.Description}}</small>
                                     </td>
                                     <td class="project-actions">
-                                        <a class="btn btn-white btn-sm" ng-click="openTeamDetails(team)"><i class="fa fa-pencil"></i></a>
-                                        <a class="btn btn-white btn-sm" ng-click="deleteTeam(team)"><i class="fa fa-trash-o"></i></a>
+                                        <a class="btn btn-white btn-sm" ng-click="openPayRuleDetails(payRule)"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-white btn-sm" ng-click="deletePayRule(payRule)"><i class="fa fa-trash-o"></i></a>
                                     </td>
 
                                 </tr>
