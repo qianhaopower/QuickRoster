@@ -32,16 +32,17 @@
                         <table class="table table-hover">
                             <tbody>
                                 <tr dir-paginate="task in taskList | filter:searchText| itemsPerPage:10" current-page="currentPage">
-                                    <td class="">
-                                        {{task.Color}}
-                                    </td>
+                                    <td ><div ng-style="{'background-color':task.Color};" class="block20"></div></td>
                                     <td class="project-people">
-                                        <a><i class="fa fa-tasks"></i></a>
+                                        <a>
+                                            <i class=" fa fa-tasks">
+                                            </i>
+                                        </a>
                                     </td>
                                     <td class="project-title">
                                         <a>{{task.TaskName}}</a>
                                         <br />
-                                        <small>{{person.Description}}</small>
+                                        <small>{{task.Description}}</small>
                                     </td>
                                     <td class="project-actions">
                                         <a class="btn btn-white btn-sm" ng-click="openTaskDetails(task)"><i class="fa fa-pencil"></i></a>
