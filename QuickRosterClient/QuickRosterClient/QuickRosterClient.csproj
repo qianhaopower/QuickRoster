@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\customStyle.css" />
+    <Content Include="css\plugins\colorpicker\colorpicker.css" />
+    <Content Include="css\plugins\colorpicker\ngColorPicker.css" />
     <Content Include="css\plugins\datepicker\angular-datapicker.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.ttf" />
@@ -108,6 +110,10 @@
     <Content Include="js\angular\errors.json" />
     <Content Include="js\angular\version.json" />
     <Content Include="js\controllers\PersonnelDetailCtrl.js" />
+    <Content Include="js\controllers\TaskDetailCtrl.js" />
+    <Content Include="js\plugins\colorpicker\bootstrap-colorpicker-module.js" />
+    <Content Include="js\plugins\colorpicker\color-picker.html" />
+    <Content Include="js\plugins\colorpicker\ngColorPicker.js" />
     <Content Include="js\plugins\datepicker\angular-datepicker.js" />
     <Content Include="js\plugins\oclazyload\.bower.json" />
     <Content Include="js\plugins\oclazyload\bower.json" />
@@ -117,6 +123,7 @@
     <Content Include="js\plugins\oclazyload\LICENSE.md" />
     <Content Include="js\plugins\oclazyload\README.md" />
     <Content Include="js\services\personnelSvc.js" />
+    <Content Include="js\services\taskSvc.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -338,6 +345,7 @@
     <Content Include="views\management\personnelDetail.html" />
     <Content Include="views\management\shift.html" />
     <Content Include="views\management\task.html" />
+    <Content Include="views\management\taskDetail.html" />
     <Content Include="views\management\team.html" />
     <Content Include="views\management\unavailability.html" />
     <Content Include="views\management\user.html" />

@@ -90,7 +90,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
                             name: 'datePicker',
                             files: ['css/plugins/datepicker/angular-datapicker.css', 'js/plugins/datepicker/angular-datepicker.js']
                         },
-                       
                     ]);
                 }
             }
@@ -99,7 +98,17 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             url: "/task",
             templateUrl: "views/management/task.html",
             data: { pageTitle: 'Task' },
-            controller: 'TaskCtrl'
+            controller: 'TaskCtrl',
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'colorpicker.module',
+                            files: ['css/plugins/colorpicker/colorpicker.css', 'js/plugins/colorpicker/bootstrap-colorpicker-module.js']
+                        },
+                    ]);
+                }
+            }
         })
         .state('management.team', {
             url: "/team",

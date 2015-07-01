@@ -1,0 +1,44 @@
+﻿<div class="inmodal">
+    <div class="modal-header">
+        <h4 class="modal-title">Task Details</h4>
+    </div>
+    <div class="">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <form name="taskInfo" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Task Name</label>
+                                <div class="col-sm-9"><input type="text" class="form-control" placeholder="--task name--" ng-model="task.TaskName" required></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Task Description</label>
+                                <div class="col-sm-9"><textarea class="form-control" placeholder="-task description--" ng-model="task.Description" required></textarea></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Task Color</label>
+                                <div class="col-sm-2"><a colorpicker type="text" ng-model="task.Color"  class="form-control" ng-style="{'background-color':task.Color};"></a></div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Task Rates</label>
+                                <div class="col-sm-9"><input type="number" class="form-control"  step="0.01" placeholder="--rate multiplier--" ng-model="task.Rate" min ="0" max="10"></div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="cancel(taskInfo)">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="taskInfo.$pristine || taskInfo.$invalid" ng-click="saveAndClose(task,taskInfo)">Save changes</button>
+
+    </div>
+</div>
+
