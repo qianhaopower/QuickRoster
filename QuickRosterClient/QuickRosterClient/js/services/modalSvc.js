@@ -6,13 +6,14 @@ app.factory('modalSvc', ['$modal', function ($modal) {
 
 
     return {
-        openModal: function(onSaveSuccess, onCancel, templateUrl, controllerName, clonedObject,originalItem, parameter) {
+        openModal: function(onSaveSuccess, onCancel, templateUrl, controllerName, clonedObject,originalItem, parameter,size) {
 
             var modalInstance = {};
     
             modalInstance = $modal.open({
                 templateUrl: templateUrl,
                 controller: controllerName,
+                size:size,
                 resolve: {
                     itemToEdit: function () {
                         return clonedObject;

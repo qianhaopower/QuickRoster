@@ -61,6 +61,7 @@
     <Content Include="css\plugins\colorpicker\colorpicker.css" />
     <Content Include="css\plugins\colorpicker\ngColorPicker.css" />
     <Content Include="css\plugins\datepicker\angular-datapicker.css" />
+    <Content Include="css\plugins\drag-drop.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.woff" />
@@ -119,6 +120,8 @@
     <Content Include="js\plugins\colorpicker\color-picker.html" />
     <Content Include="js\plugins\colorpicker\ngColorPicker.js" />
     <Content Include="js\plugins\datepicker\angular-datepicker.js" />
+    <Content Include="js\plugins\drag-drop\angualr-drap-and-drop-lists.js" />
+    <Content Include="js\plugins\drag-drop\simple.html" />
     <Content Include="js\plugins\oclazyload\.bower.json" />
     <Content Include="js\plugins\oclazyload\bower.json" />
     <Content Include="js\plugins\oclazyload\CHANGELOG.md" />

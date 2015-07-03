@@ -122,6 +122,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
                             name: 'colorpicker.module',
                             files: ['css/plugins/colorpicker/colorpicker.css', 'js/plugins/colorpicker/bootstrap-colorpicker-module.js']
                         },
+                         {
+                             name: 'dndLists',
+                             files: ['css/plugins/drag-drop.css','js/plugins/drag-drop/angualr-drap-and-drop-lists.js']
+                         },
                     ]);
                 }
             }

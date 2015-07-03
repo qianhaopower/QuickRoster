@@ -31,5 +31,18 @@ app.controller('TeamDetailCtrl', ['$scope', '$modalInstance', 'itemToEdit', func
     };
 
 
+
+    $scope.models = {
+        selected: null,
+        //lists: { "Personnel in this team": [], "Personnel available": [] }
+        lists: { "personnelInTeam": [], "personnelAvailable": [] }
+    };
+
+    // Generate initial model
+    for (var i = 1; i <= 5; ++i) {
+        $scope.models.lists.personnelInTeam.push({ label: "Personnel A" + i });
+        $scope.models.lists.personnelAvailable.push({ label: "Personnel B" + i });
+    }
+
 }]);
 

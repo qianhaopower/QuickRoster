@@ -14,7 +14,7 @@ app.controller('TeamCtrl', ['$scope', 'modalSvc', 'teamSvc', function ($scope, m
     $scope.openTeamDetails = function (team) {
 
         var clone = JSON.parse(JSON.stringify(team));
-        modalSvc.openModal($scope.onSaveCallFromModal, $scope.onCancelCallFromModal, $scope.templateUrl, $scope.controllerName, clone, team, null);
+        modalSvc.openModal($scope.onSaveCallFromModal, $scope.onCancelCallFromModal, $scope.templateUrl, $scope.controllerName, clone, team, null,'lg');
 
     };
 
@@ -40,7 +40,7 @@ app.controller('TeamCtrl', ['$scope', 'modalSvc', 'teamSvc', function ($scope, m
     $scope.addNew = function () {
         var newTeam = { TeamId: -1 };
 
-        modalSvc.openModal($scope.onSaveCallFromModal, $scope.onCancelCallFromModal, $scope.templateUrl, $scope.controllerName, newTeam, null, null);
+        modalSvc.openModal($scope.onSaveCallFromModal, $scope.onCancelCallFromModal, $scope.templateUrl, $scope.controllerName, newTeam, null, null, 'lg');
     };
 
     $scope.deleteTeam = function (team) {
