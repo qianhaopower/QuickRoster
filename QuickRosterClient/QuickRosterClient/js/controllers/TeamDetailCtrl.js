@@ -2,11 +2,9 @@
 
 var app = angular.module('inspinia');
 
-app.controller('TeamDetailCtrl', ['$scope', '$modalInstance', 'itemToEdit', function ($scope, $modalInstance, team) {
+app.controller('TeamDetailCtrl', ['$scope', '$modalInstance', 'itemToEdit', 'personnelSvc', function ($scope, $modalInstance, team, personnelSvc) {
 
-    $scope.message = 'message for team detail Modal View';
-
-    $scope.team = team;
+    setupTeam();
 
     $scope.cancel = function (form) {
         if (form.$dirty) {
@@ -22,6 +20,8 @@ app.controller('TeamDetailCtrl', ['$scope', '$modalInstance', 'itemToEdit', func
     $scope.saveAndClose = function (data, form) {
         if (form.$valid) {
             //put pre-save logic here.
+            //save selected personnelIds to team
+            data.PersonnelList = $scope.models.lists.personnelInTeam;
 
             $modalInstance.close(data);
         } else {
@@ -31,18 +31,92 @@ app.controller('TeamDetailCtrl', ['$scope', '$modalInstance', 'itemToEdit', func
     };
 
 
+    $scope.getListName = function (originalName) {
+        if (originalName == 'personnelInTeam')
+            return 'Personnel in Team';
+        if (originalName == 'personnelAvailable')
+            return 'Personnel Available';
 
-    $scope.models = {
-        selected: null,
-        //lists: { "Personnel in this team": [], "Personnel available": [] }
-        lists: { "personnelInTeam": [], "personnelAvailable": [] }
+        return "Invalid team name";
     };
 
-    // Generate initial model
-    for (var i = 1; i <= 5; ++i) {
-        $scope.models.lists.personnelInTeam.push({ label: "Personnel A" + i });
-        $scope.models.lists.personnelAvailable.push({ label: "Personnel B" + i });
+
+
+    $scope.deleteItem = function (item) {
+        var index = $scope.models.lists.personnelAvailable.indexOf(item);
+        if (index != -1) {
+            $scope.models.lists.personnelAvailable.splice(index, 1);
+        }
+
+        var indexInteam = $scope.models.lists.personnelInTeam.indexOf(item);
+        if (indexInteam != -1) {
+            $scope.models.lists.personnelInTeam.splice(indexInteam, 1);
+        }
+        $scope.teamInfoForm.$setDirty();
     }
 
+    $scope.setForm = function (form) {
+        $scope.teamInfoForm = form;
+    };
+
+
+    //private functions
+    function setupTeam() {
+
+        $scope.message = 'message for team detail Modal View';
+
+        $scope.team = team;
+
+        $scope.models = {
+            selected: null,
+            lists: { "personnelInTeam": [], "personnelAvailable": [] }
+        };
+
+        // insert personnel into team
+        if (team.PersonnelList) {
+            for (var i = 0; i < team.PersonnelList; i++) {
+                $scope.models.lists.personnelInTeam.push({ ID: team.PersonnelList[i].PersonnelId, label: team.PersonnelList[i].PersonnelName });
+            }
+        } else {
+            team.PersonnelList = [];
+        }
+
+        var allPersonnelList = personnelSvc.getModel();
+
+        var personnelAvailable = [];
+
+        for (var i = 0; i < allPersonnelList.length; i++) {
+            var found = false;
+            for (var j = 0; j < team.PersonnelList.length; j++) {
+                if (team.PersonnelList[j].PersonnelId == allPersonnelList[i].ID)
+                    found = true;
+            }
+            if (!found)
+                personnelAvailable.push({ PersonnelId: allPersonnelList[i].ID, PersonnelName: allPersonnelList[i].FirstName + ' ' + allPersonnelList[i].LastName });
+        }
+
+        //insert other personnel into available list. 
+        //sort those personnel by name;
+
+        //function compare(a, b) {
+        //    if (a.PersonnelName < b.PersonnelName)
+        //        return -1;
+        //    if (a.PersonnelName > b.PersonnelName)
+        //        return 1;
+        //    return 0;
+        //}
+
+        //personnelAvailable.sort(compare);
+        for (var i = 0; i < personnelAvailable.length; i++) {
+            $scope.models.lists.personnelAvailable.push({ ID: personnelAvailable[i].PersonnelId, label: personnelAvailable[i].PersonnelName });
+        }
+
+    };
+
+
+
+
 }]);
+
+
 

@@ -5,3 +5,8 @@
     width: 20px;
     height: 20px;
 }
+
+.rightPanel400 {
+    overflow-y: scroll; 
+    height:400px;
+}
